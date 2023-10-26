@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	var conferenceName string = "Golang Conference"
 	const conferenceTickets int = 50
-	var remainingTickets int = 50
+	var remainingTickets uint = 50
 
 	fmt.Printf("Welcome to %v Booking Application! \n", conferenceName)
 	fmt.Printf("Only %v tickets are still available from %v tickets. \n", remainingTickets, conferenceTickets)
@@ -14,7 +14,8 @@ func main() {
 	var firstName string
 	var lastName string
 	var email string
-	var userTicket int
+	var userTicket uint
+
 	fmt.Print("Enter Your Fisrt Name : ")
 	fmt.Scan(&firstName)
 
@@ -27,8 +28,11 @@ func main() {
 	fmt.Print("Enter No of Tickets : ")
 	fmt.Scan(&userTicket)
 
+	remainingTickets = remainingTickets - userTicket
+
 	fmt.Printf("Thank You %v %v for booking %v tickts. You will receive the confirmation email at %v.\n", firstName, lastName, userTicket, email)
 
+	fmt.Printf("Only %v tickets remaining for %v.\n", remainingTickets, conferenceName)
 	// fmt.Println("")
 	// fmt.Printf("conferenceName is %T. \n", conferenceName)
 	// fmt.Printf("conferenceTickets is %T. \n", conferenceTickets)
