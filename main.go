@@ -29,7 +29,11 @@ func main() {
 		fmt.Print("Enter No of Tickets : ")
 		fmt.Scan(&userTicket)
 
-		if userTicket <= remainingTickets {
+		isValidName := len(firstName) > 1 && len(lastName) > 1
+		isVAlidEmail := len(email) > 6 && strings.Contains(email, "@")
+		isValidTicketCount := userTicket > 0 && userTicket <= remainingTickets
+
+		if isValidName && isVAlidEmail && isValidTicketCount {
 			remainingTickets = remainingTickets - userTicket
 			bookings = append(bookings, firstName+" "+lastName) ///similar too push for array in js
 
@@ -50,7 +54,16 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("We only have %v tickets reamining. You cannot book %v tickets. Please Try again. \n", remainingTickets, userTicket)
+			if !isValidName {
+				fmt.Println("The First Name or Last Name is too short.")
+			}
+			if !isVAlidEmail {
+				fmt.Println("The email id is incorrect.")
+			}
+			if !isValidTicketCount {
+				fmt.Println("The ticket count you entered is invalid.")
+			}
+			fmt.Println("Please try again.")
 			continue
 		}
 	}
