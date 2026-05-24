@@ -13,6 +13,7 @@ var bookings []string
 
 func main() {
 
+	/// test comment
 	greetUsers()
 
 	for {
